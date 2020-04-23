@@ -1,8 +1,8 @@
-from Tkinter import *
+from tkinter import *
 
 root = Tk()
 
-#Drop Down Menu
+# Drop Down Menu
 OptionList = [
     10,
     20,
@@ -10,72 +10,85 @@ OptionList = [
     40,
     50,
 ]
-#Variables
+# Variables
 x = 100
 b = 5
 z = 0
 y = 0
 
-#Functions
-'''
+# Functions
+
+
 def Attack():
-    print "The Monster Roars"
+    print("The Monster Roars")
+    # declares x as a global variable so that you can change it. global
+    # variables are generally considered bad. obviously this is not a
+    # huge deal if this is just a little project but if you want to
+    # grow then you should consider other design patterns.
+    global x
     new_health = x - b
-    set(new_health)   
-'''
-#Need WORK!!!!!
+    x = new_health
+    health_meter.set(x)
+
+# Need WORK!!!!!
+
+
 def OpenImage():
     x = open("slime_monster_py", mode)
 
-#Frames
+
+# Frames
 topFrame = Frame(root)
 bottomFrame = Frame(root)
 leftFrame = Frame(root)
 rightFrame = Frame(root)
 
-#Establishing Variables
-button1 = Button(leftFrame, text = 'Attack', command = Attack)
-button2 = Button(leftFrame, text = 'Defend')
+# Establishing Variables
+button1 = Button(leftFrame, text='Attack', command=Attack)
+button2 = Button(leftFrame, text='Defend')
 
-text_health = Label(bottomFrame, text = 'Health:')
+text_health = Label(bottomFrame, text='Health:')
 
-health_meter = Scale(bottomFrame,orient = HORIZONTAL, from_=0, to=100, bg = "red")
+health_meter = Scale(bottomFrame, orient=HORIZONTAL, from_=0, to=100, bg="red")
 health_meter.set(x)
 
-#Mouse Recognition
-screen = Frame(root, width = 300, height = 300)
+# Mouse Recognition
+screen = Frame(root, width=300, height=300)
+
+
 def MouseLeft(event):
-    print ("Left Click")
+    print("Left Click")
+
 
 def MouseMiddle(event):
-    print ("Middle Click")
+    print("Middle Click")
+
 
 def MouseRight(event):
-    print ("Right Click")
+    print("Right Click")
+
 
 screen.bind("<Button-1>", MouseLeft)
 screen.bind("<Button-2>", MouseMiddle)
 screen.bind("<Button-3>", MouseRight)
 
-#Image Junk
+# Image Junk
 '''
 image = "slime_monster_py.png"
 load = open("slime.jpg")
 render = PhotoImage(load)
 '''
-#Widget Packing
+# Widget Packing
 button1.pack()
 button2.pack()
 text_health.pack()
 health_meter.pack()
 
-#Frame Packing
+# Frame Packing
 topFrame.pack()
-bottomFrame.pack(side = BOTTOM)
-leftFrame.pack(side = LEFT)
-rightFrame.pack(side = RIGHT)
+bottomFrame.pack(side=BOTTOM)
+leftFrame.pack(side=LEFT)
+rightFrame.pack(side=RIGHT)
 screen.pack()
-
-
 
 root.mainloop()
